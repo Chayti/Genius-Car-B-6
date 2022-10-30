@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import ServiceInfoRow from "./ServiceInfoRow";
 
-const ServicesTable = ({ services, setRefetch, setSorted }) => {
+const ServicesTable = ({ services, setRefetch, setSorted, setLowRange, setUpRange }) => {
 
   return (
     // Used a table from daisyUI.
@@ -10,13 +10,29 @@ const ServicesTable = ({ services, setRefetch, setSorted }) => {
       <table className="table w-full">
         <thead>
           <tr>
-            <th>Product
+            <th className="flex lg:block flex-col">
+              Product
               <button
-                className="mx-3 btn btn-warning"
+                className="mr-3 mb-3 lg:ml-3 lg:mb-0 btn btn-warning"
                 onClick={() => setSorted(true)}
               >
                 Sort by price
               </button>
+              <input
+                type="number"
+                name="lowerLimit"
+                placeholder="LowRange"
+                className="input input-bordered mr-3"
+                onBlur={(event) => setLowRange(event.target.value)}
+              />
+              <p className="text-center lg:inline"> to</p>
+              <input
+                type="number"
+                name="upperLimit"
+                placeholder="UpRange"
+                className="input input-bordered lg:ml-3"
+                onBlur={(event) => setUpRange(event.target.value)}
+              />
             </th>
             <th>Edit</th>
             <th>Delete</th>

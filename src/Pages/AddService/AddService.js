@@ -37,7 +37,7 @@ const AddService = () => {
             service_id,
             title,
             img,
-            price,
+            price: parseInt(price),
             description,
             facility
         };
@@ -100,7 +100,7 @@ const AddService = () => {
                                 <span className="label-text font-bold">Price</span>
                             </label>
                             <input
-                                type="text"
+                                type="number"
                                 name="price"
                                 placeholder="Ex: 200.00"
                                 className="input input-bordered w-full"
